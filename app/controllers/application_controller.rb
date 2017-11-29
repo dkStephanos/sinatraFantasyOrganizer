@@ -11,14 +11,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :homepage
+    erb :'application/homepage'
   end
 
   get '/login' do
     if logged_in?
       redirect '/teams'
     else
-      erb :login
+      erb :'application/login'
     end
   end
 
@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect "/teams"
     else
-      erb :signup
+      erb :'application/signup'
     end
   end
 
@@ -56,7 +56,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/failure" do
-    erb :failure
+    erb :'application/failure'
   end
 
   get "/logout" do
