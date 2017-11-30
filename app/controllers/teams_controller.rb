@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
     if logged_in?
       erb :'teams/new'
     else
-      redirect '/login'
+      redirect '/homepage'
     end
   end
 
