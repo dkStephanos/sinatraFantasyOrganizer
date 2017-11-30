@@ -30,8 +30,15 @@ class TeamsController < ApplicationController
 
   get '/teams/:slug' do
     @team = Team.find_by_slug(params[:slug])
-    #binding.pry
+
     erb :'teams/show'
+  end
+
+  post '/teams/:slug/delete' do
+    @team = Team.find_by_slug(params[:slug])
+    @team.delete
+
+    erb :'teams/delete'
   end
 
   get '/teams/:slug/edit' do
