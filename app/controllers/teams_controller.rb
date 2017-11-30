@@ -22,4 +22,12 @@ class TeamsController < ApplicationController
     erb :'teams/show'
   end
 
+  get '/teams/new' do
+    if logged_in?
+      erb :'teams/new'
+    else
+      redirect '/login'
+    end
+  end
+
 end
