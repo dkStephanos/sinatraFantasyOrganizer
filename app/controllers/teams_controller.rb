@@ -38,6 +38,8 @@ class TeamsController < ApplicationController
     else
       redirect '/invalid'
     end
+
+    redirect '/teams'
   end
 
   get '/teams/:slug' do
@@ -60,10 +62,10 @@ class TeamsController < ApplicationController
   get '/teams/:slug/edit' do
     @team = Team.find_by_slug(params[:slug])
 
-    if logged_in? && current_user.id = session[:user_id]
+    if logged_in? && current_user.id == @team.user_id
       erb :'teams/edit'
     else
-      redirect '/login'
+      redirect '/denied'
     end
   end
 
