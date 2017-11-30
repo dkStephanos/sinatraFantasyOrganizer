@@ -25,7 +25,20 @@ class TeamsController < ApplicationController
   end
 
   post '/teams' do
-    @team = Team.create(params[:team])
+    valid_data = true
+    #binding.pry
+    params[:team].each do |key, value|
+      if value == ""
+        valid_data = false
+      end
+    end
+    if valid_data
+      @team = Team.create(params[:team])
+      @team.user_id = current_user.id
+      @team.save
+    else
+      redirect '/invalid'
+    end
   end
 
   get '/teams/:slug' do
@@ -36,7 +49,12 @@ class TeamsController < ApplicationController
 
   post '/teams/:slug/delete' do
     @team = Team.find_by_slug(params[:slug])
-    @team.delete
+    #binding.pry
+    if current_user.id == @team.user_id
+      @team.delete
+    else
+      redirect '/denied'
+    end
 
     erb :'teams/delete'
   end
@@ -53,13 +71,22 @@ class TeamsController < ApplicationController
 
   post '/teams/:slug' do
     @team = Team.find_by_slug(params[:slug])
+
     if current_user.id == @team.user_id
-      if params[:team] != nil
+      valid_data = true
+      #binding.pry
+      params[:team].each do |key, value|
+        if value == ""
+          valid_data = false
+        end
+      end
+
+      if valid_data
         @team.update(params[:team])
         @team.save
         redirect "/teams/#{@team.slug}"
       else
-        redirect "/teams/#{@team.slug}/edit"
+        redirect "/invalid"
       end
     else
       redirect '/denied'
