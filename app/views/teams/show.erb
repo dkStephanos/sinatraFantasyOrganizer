@@ -1,0 +1,20 @@
+<h2><%=@team.name%></h2>
+
+<ul>
+  <li><%=@team.point_guard%></li>
+  <li><%=@team.shooting_guard%></li>
+  <li><%=@team.small_forward%></li>
+  <li><%=@team.power_forward%></li>
+  <li><%=@team.center%></li>
+  <li><%=@team.sixth_man%></li>
+</ul>
+
+<br></br>
+
+<form class="" action="/teams/<%=@team.id%>/delete" method="post">
+  <button type="submit" name="Delete Team">Delete Team</button>
+</form>
+
+<form class="" action="/teams/<%=@team.id%>" method="post">
+  <button type="submit" name="Edit Team">Edit Team</button>
+</form>
