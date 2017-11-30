@@ -1,11 +1,38 @@
-<h1>Change Tweet</h1>
+<h1>Change Team</h1>
 
-<form action="/tweets/<%=@tweet.id%>" method="POST">
-  <label>Tweet:</label>
+<form action="/teams/<%=@team.slug%>" method="POST">
+  <label>Team Name:</label>
+  <input type="text" name="team[name]" value="<%=@team.name%>">
 
   <br></br>
 
-  <input type="text" name="content" id="content" value="<%=@tweet.content%>">
+  <label>Point Guard:</label>
+  <input type="text" name="team[point_guard]" value="<%=@team.point_guard%>">
+
+  <br></br>
+
+  <label>Shooting Guard:</label>
+  <input type="text" name="team[shooting_guard]" value="<%=@team.shooting_guard%>">
+
+  <br></br>
+
+  <label>Small Forward:</label>
+  <input type="text" name="team[small_forward]" value="<%=@team.small_forward%>">
+
+  <br></br>
+
+  <label>Power Forward:</label>
+  <input type="text" name="team[power_forward]" value="<%=@team.power_forward%>">
+
+  <br></br>
+
+  <label>Center:</label>
+  <input type="text" name="team[center]" value="<%=@team.center%>">
+
+  <br></br>
+
+  <label>Sixth Man:</label>
+  <input type="text" name="team[sixth_man]" value="<%=@team.sixth_man%>">
 
   <br></br>
 

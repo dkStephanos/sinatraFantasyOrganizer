@@ -59,6 +59,10 @@ class ApplicationController < Sinatra::Base
     erb :'application/failure'
   end
 
+  get '/denied' do
+    erb :'application/denied'
+  end
+
   get "/logout" do
     session.clear
     redirect "/login"
