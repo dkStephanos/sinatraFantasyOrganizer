@@ -26,7 +26,6 @@ class TeamsController < ApplicationController
 
   post '/teams' do
     valid_data = true
-    #binding.pry
     params[:team].each do |key, value|
       if value == ""
         valid_data = false
@@ -49,7 +48,6 @@ class TeamsController < ApplicationController
 
   post '/teams/:slug/delete' do
     @team = Team.find_by_slug(params[:slug])
-    #binding.pry
     if current_user.id == @team.user_id
       @team.delete
     else
@@ -74,7 +72,6 @@ class TeamsController < ApplicationController
 
     if current_user.id == @team.user_id
       valid_data = true
-      #binding.pry
       params[:team].each do |key, value|
         if value == ""
           valid_data = false
