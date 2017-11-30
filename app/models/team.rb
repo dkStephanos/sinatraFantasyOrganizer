@@ -8,7 +8,7 @@ class Team < ActiveRecord::Base
   def self.find_by_slug(slug)
     Team.all.each do |team|
       if(team.slug == slug)
-        return team.first
+        return team
       end
     end
   end

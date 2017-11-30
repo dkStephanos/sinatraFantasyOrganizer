@@ -25,11 +25,11 @@ class TeamsController < ApplicationController
   end
 
   post '/teams' do
-    @team = Team.create(params)
+    @team = Team.create(params[:team])
   end
 
   get '/teams/:slug' do
-    @team = Team.find_by_slug(params[:slug]).first
+    @team = Team.find_by_slug(params[:slug])
 
     erb :'teams/show'
   end
