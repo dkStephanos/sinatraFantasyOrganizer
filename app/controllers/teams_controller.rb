@@ -16,4 +16,10 @@ class TeamsController < ApplicationController
     erb :'teams/teams'
   end
 
+  get '/teams/:slug' do
+    @team = Team.find_by_slug(parmas[:slug])
+
+    erb :'teams/show'
+  end
+
 end
