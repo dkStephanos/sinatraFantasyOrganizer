@@ -16,18 +16,22 @@ class TeamsController < ApplicationController
     erb :'teams/teams'
   end
 
-  get '/teams/:slug' do
-    @team = Team.find_by_slug(parmas[:slug])
-
-    erb :'teams/show'
-  end
-
   get '/teams/new' do
     if logged_in?
       erb :'teams/new'
     else
       redirect '/login'
     end
+  end
+
+  post '/teams' do
+    @team = Team.create(params)
+  end
+
+  get '/teams/:slug' do
+    @team = Team.find_by_slug(params[:slug]).first
+
+    erb :'teams/show'
   end
 
 end
