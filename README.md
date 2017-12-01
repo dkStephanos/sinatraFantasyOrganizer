@@ -4,7 +4,7 @@ A MVC application that allows users to log in and create, edit, update and destr
 
 ## Installation
 
-To use this app, just clone, run rake db:migrate and then run shotgun. Everything should be set up.
+To use this app, just clone, run bundle and then run rake db:migrate and then run shotgun. Everything should be set up.
 
 ## Usage
 
